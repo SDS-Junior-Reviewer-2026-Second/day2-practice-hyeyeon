@@ -39,21 +39,34 @@ public class TennisGame {
         }
     }
     public String getEqualScore(){
-        if( this.player1Score >= 3) return "Deuce";
-        return SCORE_NAMES[this.player1Score]+ "-All";
+        if( player1Score >= 3) return "Deuce";
+        return SCORE_NAMES[player1Score]+ "-All";
     }
 
     public String getAdvantageOrWinScore(){
-        int difference = this.player1Score-this.player2Score;
-        if (difference==1) return "Advantage player1";
-        else if (difference>=2) return "Win for player1";
-        else if (difference==-1) return "Advantage player2";
+        if (isAdvantagePlayer1()) return "Advantage player1";
+        else if (isAdvantagePlayer2()) return "Advantage player2";
+        else if (isWinnerPlayer1()) return "Win for player1";
         else return "Win for player2";
     }
 
+    public boolean isAdvantagePlayer1(){
+        if (player1Score == 1 + player2Score) return true;
+        return false;
+    }
+    public boolean isAdvantagePlayer2(){
+        if (player2Score == player1Score + 1) return true;
+        return false;
+    }
+
+    public boolean isWinnerPlayer1(){
+        if (player1Score >= 2 + player2Score) return true;
+        return false;
+    }
+
     public String getNormalScore(){
-        return SCORE_NAMES[this.player1Score]
+        return SCORE_NAMES[player1Score]
                 +"-"
-                +SCORE_NAMES[this.player2Score];
+                +SCORE_NAMES[player2Score];
     }
 }
