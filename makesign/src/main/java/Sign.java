@@ -30,12 +30,6 @@ public class Sign {
         return true;
     }
 
-    void sign(ArrayList<Node> signList) {
-        for (Node tar : signList) {
-            System.out.println(tar.dateCode + " : " + tar.name);
-        }
-    }
-
     void sortSignList(ArrayList<Node> signList){
         for (int y = 0; y < signList.size(); y++) {
             for (int x = y + 1; x < signList.size(); x++) {
@@ -54,6 +48,13 @@ public class Sign {
 //        signList.get(x).dateCode = temp.dateCode;
 //        signList.get(x).name = temp.name;
     }
+
+    void sign(ArrayList<Node> signList) {
+        for (Node tar : signList) {
+            System.out.println(tar.dateCode + " : " + tar.name);
+        }
+    }
+
 
     public static void main(String[] args) {
         Sign sign = new Sign();
