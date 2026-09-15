@@ -2,10 +2,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Main {
-    static void run(ArrayList<Integer> theList) {
-        for (int t = 0; t < theList.size(); t++) {
-            if (theList.get(t) == 0) continue;
-            theList.set(t, theList.get(t) - 1);
+
+    available
+    static void daysGo (ArrayList<Integer> availableRoomList) {
+        for (int t = 0; t < availableRoomList.size(); t++) {
+            if (availableRoomList.get(t) == 0) continue;
+            availableRoomList.set(t, availableRoomList.get(t) - 1);
         }
     }
 
