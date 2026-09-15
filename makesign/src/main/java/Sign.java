@@ -18,7 +18,9 @@ public class Sign {
 
         //2. valid 검사
         if(!isValidation(signList)){ throw new Exception(); }
-        else { sign(signList); }
+
+        //3. 사인
+        sign(signList);
     }
 
     boolean isValidation(ArrayList<Node> signList){
@@ -46,11 +48,12 @@ public class Sign {
     }
 
     void swapNode(ArrayList<Node> signList, int x, int y){
-        Node temp = new Node(signList.get(y).dateCode, signList.get(y).name);
-        signList.get(y).dateCode = signList.get(x).dateCode;
-        signList.get(y).name = signList.get(x).name;
-        signList.get(x).dateCode = temp.dateCode;
-        signList.get(x).name = temp.name;
+        Node temp = signList.get(y);
+        signList.set(y. siginList.get(x));
+        signList.set(x, temp);
+//        signList.get(y).name = signList.get(x).name;
+//        signList.get(x).dateCode = temp.dateCode;
+//        signList.get(x).name = temp.name;
     }
 
     public static void main(String[] args) {
