@@ -14,35 +14,43 @@ public class Sign {
 
     void makeSign(ArrayList<Node> signList) throws Exception {
         //1. 서명 정렬하기
+        sortSignList(signList);
+
+        //2. valid 검사
+        if(!isValidation(signList)){ throw new Exception(); }
+        else { sign(signList); }
+    }
+
+    boolean isValidation(ArrayList<Node> signList){
+        for (Node tar : signList) {
+            if (tar.dateCode > 0 && tar.dateCode < 10) continue;
+            return false;
+        }
+        return true;
+    }
+
+    void sign(ArrayList<Node> signList) {
+        for (Node tar : signList) {
+            System.out.println(tar.dateCode + " : " + tar.name);
+        }
+    }
+
+    void sortSignList(ArrayList<Node> signList){
         for (int y = 0; y < signList.size(); y++) {
             for (int x = y + 1; x < signList.size(); x++) {
                 if (signList.get(y).dateCode > signList.get(x).dateCode) {
-                    Node temp = new Node(signList.get(y).dateCode, signList.get(y).name);
-                    signList.get(y).dateCode = signList.get(x).dateCode;
-                    signList.get(y).name = signList.get(x).name;
-                    signList.get(x).dateCode = temp.dateCode;
-                    signList.get(x).name = temp.name;
+                    swapNode(signList, x, y);
                 }
             }
         }
+    }
 
-        //2. valid 검사
-        boolean flag = false;
-        for (Node tar : signList) {
-            if (tar.dateCode > 0 && tar.dateCode < 10) continue;
-            flag = true;
-            break;
-        }
-
-        if (flag == true) {
-            throw new Exception();
-        }
-        else {
-            //3. 서명하기
-            for (Node tar : signList) {
-                System.out.println(tar.dateCode + " : " + tar.name);
-            }
-        }
+    void swapNode(ArrayList<Node> signList, int x, int y){
+        Node temp = new Node(signList.get(y).dateCode, signList.get(y).name);
+        signList.get(y).dateCode = signList.get(x).dateCode;
+        signList.get(y).name = signList.get(x).name;
+        signList.get(x).dateCode = temp.dateCode;
+        signList.get(x).name = temp.name;
     }
 
     public static void main(String[] args) {
