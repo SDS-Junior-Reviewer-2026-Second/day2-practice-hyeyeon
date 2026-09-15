@@ -13,12 +13,11 @@ class Node {
 public class Sign {
 
     void makeSign(ArrayList<Node> signList) throws Exception {
-        //1. 서명 정렬하기
-        sortSignList(signList);
-
-        //2. valid 검사
+        // valid 검사
         if(!isValidation(signList)){ throw new Exception(); }
 
+        //1. 서명 정렬하기
+        sortSignList(signList);
         //3. 사인
         sign(signList);
     }
